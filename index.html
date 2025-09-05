@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b e a n f r o g . x y z</title>
+    <style>
+        @font-face {
+            font-family: 'W95FA';
+            src: url('./W95FA.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .w95 {
+            font-family: 'W95FA', system-ui;
+        }
+    </style>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex justify-center items-center w-screen h-screen bg-black">
+
+    <!-- Main Window -->
+    <div class="w-3/4 h-3/4 bg-black border-[3px] border-white flex flex-col shadow-[4px_4px_8px_rgba(255,255,255,0.15)] w95">
+
+        <!-- Title Bar -->
+        <div class="flex items-center justify-between border-b-[3px] border-white bg-black text-white px-2 py-1">
+            <span class="font-bold">b e a n f r o g . x y z</span>
+            <div class="flex space-x-1">
+                <button class="flex justify-center items-center w-6 h-6 bg-black border border-white hover:bg-white hover:text-black">_</button>
+                <button class="flex justify-center items-center w-6 h-6 bg-black border border-white hover:bg-white hover:text-black">□</button>
+                <button class="flex justify-center items-center w-6 h-6 bg-black border border-white hover:bg-white hover:text-black" onclick="alert('💔🥀')">×</button>
+            </div>
+        </div>
+
+        <!-- Tab Headers -->
+        <div class="flex border-b-[3px] border-white bg-black text-white">
+            <button class="px-4 py-1 text-black bg-white border-r border-white tab-btn" data-tab="tab1">Home</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab2">Contact</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab3">My Stuff</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab4">Skills/Certs</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab5">Tech</button>
+        </div>
+
+
+        <div class="overflow-auto flex-1 p-4 text-white bg-black">
+
+            <!--Home-->
+            <div id="tab1" class="block space-y-4 tab-content">
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">👋 Welcome</h2>
+                    <p onclick="this.nextElementSibling.classList.toggle('hidden')">
+                        Hello! I'm a student who likes computers n' such.
+                    </p>
+                    <div class="hidden p-2 mt-2 text-white bg-black">
+                        I've hidden <span class="font-bold">4</span> easter eggs around this website. Can you find them all? (you've already found one!)
+                    </div>
+                </div>
+
+
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">👨‍💻 About Me</h2>
+                    <div class="flex flex-col">
+                        <p>Name: <span class="font-bold">Graeme Kieran / beanfrog</span></p>
+                        <p>Occupation: <span class="font-bold">Student</span></p>
+                        <p>Location: <span class="font-bold">California/Oregon, USA</span></p>
+                        <p>I love: <span class="font-bold">My dogs, building things, computers, caffeine, redwood forests, weightlifting, fishing</span></p>
+                    </div>
+                </div>
+
+                <div class="py-96"></div>
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🐧 Penguins</h2>
+                    <p>Two penguins are paddling a canoe through the desert. One says to the other, "Where's the paddle", the other says "sure does!" (sorry owen plz don't kill me)</p>
+                </div>
+            </div>
+            <!--Contact-->
+            <div id="tab2" class="block space-y-4 tab-content">
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🗣️ Get In Touch</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog" class="font-bold underline">Github</a> ∘
+                        <a href="mailto:gkieran32855@gmail.com" class="font-bold underline">Email</a> ∘
+                        <a target="_blank" href="https://discord.com/users/692853106895093800" class="font-bold underline">Discord</a>
+                    </span>
+                </div>
+            </div>
+            <!--My Stuff-->
+            <div id="tab3" class="block space-y-4 tab-content">
+
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">☕ Beanfrog Caffeine</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/caffeine" class="font-bold underline">Github</a> ∘
+                        <a target="_blank" href="https://caffeine.beanfrog.xyz" class="font-bold underline">Link</a></span>
+                    <p>A caffeine logging web app with Google auth and a ranking system.</p>
+                </div>
+
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🚥 Pi-Neopixel V2</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/pi-neopixel-v2" class="font-bold underline">Github</a>
+                    <p>Control Neopixel/ws281x LEDs over http using a Raspberry Pi.</p>
+                </div>
+
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">💡 DMX Neopixel</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/dmx-neopixel" class="font-bold underline">Github</a>
+                    <p>Control Neopixel/ws281x LEDs using the DMX (or ArtNet, but BYO converter) protocol and an Arduino.</p>
+                </div>
+
+                 <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">📖 Text Adventure</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/text-adventure" class="font-bold underline">Github</a> ∘
+                        <a target="_blank" href="https://pages.beanfrog.xyz/creator" class="font-bold underline">Link</a>
+                    <p>CLI Choose Your Own Adventure player, and a GUI story creation tool to match.</p>
+                </div>
+
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🔧 Rust Utils</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/rust-utils" class="font-bold underline">Github</a>
+                    <p>A few small CLI tools written in Rust that help with certain tasks (basically just using Rust as a scripting language).</p>
+                </div>
+
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🔊 Goober FX</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/GooberFX" class="font-bold underline">Github</a>
+                    <p>4-channel theatre sound effect app thingy idk.</p>
+                </div>
+
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🔋 Battery Planner</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/battery-planner" class="font-bold underline">Github</a> ∘
+                        <a class="font-bold underline" onclick="alert('Not quite done with this yet lol')">Link</a>
+                    <p>Mock up nickel strip routes for Li-Ion/LiFePo4 based e-bike batteries.</p>
+                </div>
+                 <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">❓ Stupid Trivia</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/stupid-trivia" class="font-bold underline">Github</a> ∘
+                        <a class="font-bold underline" onclick="alert('Not quite done with this yet lol')">Link</a>
+                    <p>Trivia but all the answers are just stupid.</p>
+                </div>
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🎶 Tuneguessr</h2>
+                    <span>
+                        <a target="_blank" href="https://github.com/bean-frog/tuneguessr" class="font-bold underline">Github</a> ∘
+                        <a target="_blank" href="https://bean-frog.github.io/tuneguessr" class="font-bold underline">Link</a>
+                        <p>Guess which country each song is from.</p>
+                </div>
+            </div>
+            <!--Skills-->
+            <div id="tab4" class="block space-y-4 tab-content">
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🟢 Proficient</h2>
+                    <span class="font-bold">HTML/CSS</span> ∘
+                    <span class="font-bold">Javascript</span> ∘
+                    <span class="font-bold">TailwindCSS/DaisyUI</span> ∘
+                    <span class="font-bold">Python</span> ∘
+                    <span class="font-bold">Typescript</span> ∘
+                    <span class="font-bold">React</span> ∘
+                    <span class="font-bold">NodeJS</span> ∘
+                    <span class="font-bold">Express</span> ∘
+                    <span class="font-bold">Arduino</span> ∘
+                    <span class="font-bold">Linux</span>
+                </div>
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🟡 Competent</h2>
+                    <span class="font-bold">C</span> ∘
+                    <span class="font-bold">SQLite</span> ∘
+                    <span class="font-bold">Firebase</span> ∘
+                    <span class="font-bold">Vercel</span> ∘
+                    <span class="font-bold">Java</span> ∘
+                    <span class="font-bold">Ruby</span>
+                </div>
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">🔴 Learning</h2>
+                    <span class="font-bold">Rust</span> ∘
+                    <span class="font-bold">Ruby</span> ∘
+                    <span class="font-bold">Docker</span> ∘
+                    <span class="font-bold">Kubernetes</span>
+
+                </div>
+                <img alt="Harvard CS50 certificate" src="https://certificates.cs50.io/a92aeccd-a23d-4088-9d85-b36b0d107ec7.png?size=letter" class="w-1/2 border border-white opacity-75"></img>
+            </div>
+            <!--Tech-->
+            <div id="tab5" class="block space-y-4 tab-content">
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">💻 Daily Driver</h2>
+                    <p>My daily driver laptop is a Framework 13. I use it for everything from programming, to DJing, to taking class notes.</p>
+                    <div class="flex flex-wrap">
+                        <div class="p-2 m-2 ml-0 border h-fit w-fit">
+                            <p class="text-lg font-bold">Hardware</p>
+                             <p><span class="font-bold">CPU:</span> AMD Ryzen AI 5 340 @4.9GHz</p>
+                    <p><span class="font-bold">RAM:</span> 64GB DDR5 (32GB x 2)</p>
+                    <p><span class="font-bold">Graphics:</span> AMD Radeon 840M</p>
+                    <p><span class="font-bold">Storage:</span> 2TB NVME</p>
+                        </div>
+                        <div class="p-2 m-2 ml-0 border h-fit w-fit">
+                            <p class="text-lg font-bold">Software</p>
+                             <p><span class="font-bold">OS:</span> CachyOS (modified)</p>
+                             <p><span class="font-bold">Shell:</span> zsh</p>
+                             <p><span class="font-bold">Terminal:</span> kitty</p>
+                             <p><span class="font-bold">WM:</span> hyprland</p>
+                             <p><span class="font-bold">Other stuff:</span> Waybar ∘ Swaylock ∘ Hypridle ∘ micro</p>
+                        </div>
+                    </div>
+                   
+                </div>
+
+<div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">💻 Backup Laptop</h2>
+                    <p>This is a Dell XPS 7390 with a bone-stock installation of Windows 10. This only gets used when I absolutely need Windows, like that stupid lockdown browser for tests.</p>
+                    <div class="flex flex-wrap">
+                        <div class="p-2 m-2 ml-0 border h-fit w-fit">
+                            <p class="text-lg font-bold">Hardware</p>
+                             <p><span class="font-bold">CPU: Intel i7-1065G7</span> </p>
+                    <p><span class="font-bold">RAM: 16GB DDR4 (8GB x 2)</span> </p>
+                    <p><span class="font-bold">Graphics: Intel Iris Plus</span> </p>
+                    <p><span class="font-bold">Storage: 500GB NVME</span></p>
+                        </div>
+                        <div class="p-2 m-2 ml-0 border h-fit w-fit">
+                            <p class="text-lg font-bold">Software</p>
+                             <p><span class="font-bold">OS:</span> Windows 10</p>
+                    
+                        </div>
+                    </div>
+                   
+                </div>
+
+<div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">💻 Other Misc Tech</h2>
+                   <div class="grid grid-cols-2 gap-4 mt-2">
+  <div class="p-4 border">
+    <p class="text-lg font-bold">Server</p>
+    <p>Dell Latitude laptop, stripped down and used as a server. Runs Ubuntu Server 24.04 LTS</p>
+  </div>
+
+  <div class="p-4 border">
+    <p class="text-lg font-bold">Jetson Orin Nano</p>
+    <p>Nvidia Jetson Orin Nano, an extremely powerful SBC geared towards AI. Will be running some models locally very soon.</p>
+  </div>
+
+  <div class="p-4 border">
+    <p class="text-lg font-bold">Raspberry Pi 4</p>
+    <p>Got a few of them. One runs <a target="_blank" class="underline" href="http://github.com/bean-frog/pi-neopixel-v2">bean-frog/pi-neopixel-v2</a></p>
+  </div>
+
+  <div class="p-4 border">
+    <p class="text-lg font-bold">Lenovo 14W</p>
+    <p>A low end laptop that I use for testing stuff and flashing ROMs to phones. Currently running Arch Linux with the XFCE desktop.</p>
+  </div>
+</div>
+
+
+            </div>
+        </div>
+
+
+        <script>
+            // hacky fix for stupid thing
+            document.addEventListener("DOMContentLoaded", function() {
+                document.querySelector("[data-tab='tab1']").click();
+            })
+            // tab switching
+            document.querySelectorAll('.tab-btn').forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.add('hidden'));
+                    document.getElementById(tabId).classList.remove('hidden');
+                    document.querySelectorAll('.tab-btn').forEach(btn => {
+                        btn.classList.remove('bg-white', 'text-black');
+                        btn.classList.add('bg-black', 'text-white');
+                    });
+                    button.classList.remove('bg-black', 'text-white');
+                    button.classList.add('bg-white', 'text-black');
+                });
+            });
+        </script>
+        <script>
+            // definitely not the konami code
+            const hackthesupersecretspybase = (() => {
+                const waystohackstuff = [
+                    "QXJyb3dVcA==", "QXJyb3dVcA==", "QXJyb3dEb3du", "QXJyb3dEb3du",
+                    "QXJyb3dMZWZ0", "QXJyb3dSaWdodA==", "QXJyb3dMZWZ0", "QXJyb3dSaWdodA==",
+                    "Yg==", "YQ=="
+                ];
+                const hackingtarget = waystohackstuff.map(code => atob(code));
+                let hackstatus = 0;
+                document.addEventListener('keydown', (event) => {
+                    if (event.key.toLowerCase() === hackingtarget[hackstatus].toLowerCase()) {
+                        hackstatus++;
+                        if (hackstatus === hackingtarget.length) {
+                            window.location.href = atob('aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1pRExtWVo1SHFnTQ==');
+                        }
+                    } else {
+                        hackstatus = 0;
+                    }
+                });
+            })();
+        </script>
+
+
+
+</body>
+
+</html>

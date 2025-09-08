@@ -37,12 +37,11 @@
 
         <!-- Tab Headers -->
         <div class="flex border-b-[3px] border-white bg-black text-white">
-            <button class="px-4 py-1 text-black bg-white border-r border-white tab-btn" data-tab="tab1">Home</button>
-            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab2">Contact</button>
-            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab3">My Stuff</button>
-            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab4">Skills/Certs</button>
-            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab5">Tech</button>
-        </div>
+            <button class="px-4 py-1 text-black bg-white border-r border-white tab-btn"data-tab="tab1" data-tabname="home">Home</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab2" data-tabname="contact">Contact</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab3" data-tabname="work">My Stuff</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab4" data-tabname="skills">Skills/Certs</button>
+            <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab5" data-tabname="tech">Tech</button>        </div>
 
 
         <div class="overflow-auto flex-1 p-4 text-white bg-black">
@@ -157,7 +156,7 @@
                 </div>
             </div>
             <!--Skills-->
-            <div id="tab4" class="block space-y-4 tab-content">
+            <div id="tab4"class="block space-y-4 tab-content">
                 <div class="p-4 bg-black border border-white">
                     <h2 class="text-lg font-bold">🟢 Proficient</h2>
                     <span class="font-bold">HTML/CSS</span> ∘
@@ -191,7 +190,7 @@
                 <img alt="Harvard CS50 certificate" src="https://certificates.cs50.io/a92aeccd-a23d-4088-9d85-b36b0d107ec7.png?size=letter" class="w-1/2 border border-white opacity-75"></img>
             </div>
             <!--Tech-->
-            <div id="tab5" class="block space-y-4 tab-content">
+            <div id="tab5"class="block space-y-4 tab-content">
                 <div class="p-4 bg-black border border-white">
                     <h2 class="text-lg font-bold">💻 Daily Driver</h2>
                     <p>My daily driver laptop is a Framework 13. I use it for everything from programming, to DJing, to taking class notes.</p>
@@ -265,28 +264,46 @@
 
 
         <script>
-            // hacky fix for stupid thing
-            document.addEventListener("DOMContentLoaded", function() {
-                document.querySelector("[data-tab='tab1']").click();
-            })
-            // tab switching
-            document.querySelectorAll('.tab-btn').forEach(button => {
-                button.addEventListener('click', () => {
-                    const tabId = button.getAttribute('data-tab');
-                    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.add('hidden'));
-                    document.getElementById(tabId).classList.remove('hidden');
-                    document.querySelectorAll('.tab-btn').forEach(btn => {
-                        btn.classList.remove('bg-white', 'text-black');
-                        btn.classList.add('bg-black', 'text-white');
-                    });
-                    button.classList.remove('bg-black', 'text-white');
-                    button.classList.add('bg-white', 'text-black');
-                });
-            });
+            // // hacky fix for stupid thing
+            // document.addEventListener("DOMContentLoaded", function() {
+            //     document.querySelector("[data-tab='tab1']").click();
+            // })
+document.querySelectorAll('.tab-btn').forEach(button => {
+    button.addEventListener('click', () => {
+        const tabId = button.getAttribute('data-tab');
+        const tabName = button.getAttribute('data-tabname');
+
+        // Hide all tab contents
+        document.querySelectorAll('.tab-content').forEach(tc => tc.classList.add('hidden'));
+        document.getElementById(tabId).classList.remove('hidden');
+
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.classList.remove('bg-white', 'text-black');
+            btn.classList.add('bg-black', 'text-white');
+        });
+        button.classList.remove('bg-black', 'text-white');
+        button.classList.add('bg-white', 'text-black');
+
+        history.replaceState(null, "", `#${tabName}`);
+    });
+});
+
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.substring(1); // remove #
+    if (hash) {
+        const targetButton = document.querySelector(`.tab-btn[data-tabname="${hash}"]`);
+        if (targetButton) targetButton.click();
+    } else {
+        const firstButton = document.querySelector('.tab-btn');
+        if (firstButton) firstButton.click();
+    }
+});
+
+
         </script>
         <script>
             // definitely not the konami code
-            const hackthesupersecretspybase = (() => {
+            const doHacking = (() => {
                 const waystohackstuff = [
                     "QXJyb3dVcA==", "QXJyb3dVcA==", "QXJyb3dEb3du", "QXJyb3dEb3du",
                     "QXJyb3dMZWZ0", "QXJyb3dSaWdodA==", "QXJyb3dMZWZ0", "QXJyb3dSaWdodA==",

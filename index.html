@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>b e a n f r o g . x y z</title>
+        <link rel="stylesheet" href="style.css">
+
     <style>
         @font-face {
             font-family: 'W95FA';
@@ -16,8 +18,19 @@
         .w95 {
             font-family: 'W95FA', system-ui;
         }
+
+   .no-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+
+  overflow: auto;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
     </style>
-    <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="flex justify-center items-center w-screen h-screen bg-black">
@@ -44,7 +57,7 @@
             <button class="px-4 py-1 bg-black border-r border-white hover:bg-white hover:text-black tab-btn" data-tab="tab5" data-tabname="tech">Tech</button>        </div>
 
 
-        <div class="overflow-auto flex-1 p-4 text-white bg-black">
+        <div class="overflow-auto flex-1 p-4 text-white bg-black no-scrollbar">
 
             <!--Home-->
             <div id="tab1" class="block space-y-4 tab-content">
@@ -163,7 +176,7 @@
             <!--Skills-->
             <div id="tab4"class="block space-y-4 tab-content">
                 <div class="p-4 bg-black border border-white">
-                    <h2 class="text-lg font-bold">🟢 Proficient</h2>
+                    <h2 class="text-lg font-bold">🟢 Comfortable</h2>
                     <span class="font-bold">HTML/CSS</span> ∘
                     <span class="font-bold">Javascript</span> ∘
                     <span class="font-bold">TailwindCSS/DaisyUI</span> ∘
@@ -182,7 +195,6 @@
                     <span class="font-bold">Firebase</span> ∘
                     <span class="font-bold">Vercel</span> ∘
                     <span class="font-bold">Java</span> ∘
-                    <span class="font-bold">Ruby</span>
                 </div>
                 <div class="p-4 bg-black border border-white">
                     <h2 class="text-lg font-bold">🔴 Learning</h2>
@@ -192,7 +204,10 @@
                     <span class="font-bold">Kubernetes</span>
 
                 </div>
-                <img alt="Harvard CS50 certificate" src="https://certificates.cs50.io/a92aeccd-a23d-4088-9d85-b36b0d107ec7.png?size=letter" class="w-1/2 border border-white opacity-75"></img>
+                <div class="p-4 bg-black border border-white">
+                    <h2 class="text-lg font-bold">CS50 @ Harvard</h2>
+                        <img alt="Harvard CS50 certificate" src="https://certificates.cs50.io/a92aeccd-a23d-4088-9d85-b36b0d107ec7.png?size=letter" class="w-1/2 border border-white opacity-75"></img>
+                    </div>
             </div>
             <!--Tech-->
             <div id="tab5"class="block space-y-4 tab-content">

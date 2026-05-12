@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/lighting/$1",
+      "has": [{ "type": "host", "value": "lighting.beanfrog.xyz" }]
+    }
+  ]
+}

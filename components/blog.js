@@ -25,6 +25,7 @@ class BlogTab extends HTMLElement {
 			<div id="blog-post" class="hidden"></div>
 		</div>
 		`
+		this._initialPost = new URLSearchParams(window.location.search).get('post')
 		this.loadIndex()
 	}
 
@@ -45,9 +46,8 @@ class BlogTab extends HTMLElement {
 			listEl.querySelectorAll('[data-file]').forEach(el => {
 				el.addEventListener('click', () => this.loadPost(el.dataset.file, el.dataset.title))
 			})
-			const requested = new URLSearchParams(window.location.search).get('post')
-			if (requested) {
-				const match = posts.find(p => toSlug(p.title) === requested)
+			if (this._initialPost) {
+				const match = posts.find(p => toSlug(p.title) === this._initialPost)
 				if (match) {
 					document.querySelector('.tab-btn[data-tabname="blog"]')?.click()
 					this.loadPost(match.file, match.title)
@@ -64,11 +64,11 @@ class BlogTab extends HTMLElement {
 		listEl.classList.add('hidden')
 		postEl.classList.remove('hidden')
 		postEl.innerHTML = `<p style="opacity:0.5">loading...</p>`
-		history.replaceState(null, "", `?post=${toSlug(title ?? file)}#blog`)
+		history.replaceState(null, "", `${location.pathname}?post=${toSlug(title ?? file)}#blog`)
 		const goBack = () => {
 			postEl.classList.add('hidden')
 			listEl.classList.remove('hidden')
-			history.replaceState(null, "", '#blog')
+			history.replaceState(null, "", `${location.pathname}#blog`)
 		}
 		try {
 			const res = await fetch(`${BASE}/${file}`)

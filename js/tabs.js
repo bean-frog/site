@@ -18,7 +18,7 @@ document.querySelectorAll('.tab-btn').forEach(button => {
         button.classList.remove('bg-black', 'text-white');
         button.classList.add('bg-white', 'text-black');
 
-        history.replaceState(null, "", `#${tabName}`);
+        history.replaceState(null, "", `${location.pathname}#${tabName}`);
     });
 });
 

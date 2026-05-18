@@ -75,16 +75,32 @@ class BlogTab extends HTMLElement {
 			let md = await res.text()
 			md = md.replace(/<!--META[^>]*-->\s*/, '')
 			postEl.innerHTML = `
-				<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem;margin-bottom:1rem" id="blog-back">&#8592; back</button>
+				<div style="display:flex;gap:0.5rem;margin-bottom:1rem">
+					<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem" id="blog-back">&#8592; back</button>
+					<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem" id="blog-copy">Copy Link</button>
+				</div>
 				<div class="blog-content">${marked.parse(md)}</div>
 			`
 			postEl.querySelector('#blog-back').addEventListener('click', goBack)
+			postEl.querySelector('#blog-copy').addEventListener('click', (e) => {
+				navigator.clipboard.writeText(location.href)
+				e.target.textContent = 'Copied'
+				setTimeout(() => e.target.textContent = 'Copy Link', 1500)
+			})
 		} catch (e) {
 			postEl.innerHTML = `
-				<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem;margin-bottom:1rem" id="blog-back">&#8592; back</button>
+				<div style="display:flex;gap:0.5rem;margin-bottom:1rem">
+					<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem" id="blog-back">&#8592; back</button>
+					<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem" id="blog-copy">Copy Link</button>
+				</div>
 				<p style="opacity:0.5">failed to load post</p>
 			`
 			postEl.querySelector('#blog-back').addEventListener('click', goBack)
+			postEl.querySelector('#blog-copy').addEventListener('click', (e) => {
+				navigator.clipboard.writeText(location.href)
+				e.target.textContent = 'Copied'
+				setTimeout(() => e.target.textContent = 'Copy Link', 1500)
+			})
 		}
 	}
 }

@@ -56,6 +56,10 @@ const TECH = [
     },
   },
   {
+    "title": "Eris",
+    "desc": "Raspberry Pi with an external SSD that runs Kiwix, and a custom built notebook digitizer and dashboard"
+  },
+  {
     title: "BeeLink Mini PC",
     desc: "distrohopping device lol",
     entries: { OS: "all of them. every single one." },

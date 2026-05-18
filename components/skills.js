@@ -23,10 +23,11 @@ class SkillsTab extends HTMLElement {
 				<span class="font-bold">Firebase</span> ∘
 				<span class="font-bold">Vercel</span> ∘
 				<span class="font-bold">Java</span> ∘
+        <span class="font-bold">Rust</span> ∘
+
 			</div>
 			<div class="p-4 bg-black border border-white">
 				<h2 class="text-lg font-bold">🔴 Learning</h2>
-				<span class="font-bold">Rust</span> ∘
 				<span class="font-bold">Ruby</span> ∘
 				<span class="font-bold">Docker</span> ∘
 				<span class="font-bold">Kubernetes</span>

@@ -1,5 +1,7 @@
 const BASE = 'https://raw.githubusercontent.com/bean-frog/bean-frog.github.io/main/posts'
 
+const toSlug = str => str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+
 class BlogTab extends HTMLElement {
 	connectedCallback() {
 		this.innerHTML = `
@@ -32,7 +34,7 @@ class BlogTab extends HTMLElement {
 			const res = await fetch(`${BASE}/index.json`)
 			const posts = await res.json()
 			listEl.innerHTML = posts.map(p => `
-				<div class="p-4 border border-white cursor-pointer hover:bg-white hover:text-black" data-file="${p.file}" style="margin-bottom:1rem">
+				<div class="p-4 border border-white cursor-pointer hover:bg-white hover:text-black" data-file="${p.file}" data-title="${p.title}" style="margin-bottom:1rem">
 					<div class="flex justify-between">
 						<span class="font-bold">${p.title}</span>
 						<span style="opacity:0.5">${p.date}</span>
@@ -41,19 +43,33 @@ class BlogTab extends HTMLElement {
 				</div>
 			`).join('')
 			listEl.querySelectorAll('[data-file]').forEach(el => {
-				el.addEventListener('click', () => this.loadPost(el.dataset.file))
+				el.addEventListener('click', () => this.loadPost(el.dataset.file, el.dataset.title))
 			})
+			const requested = new URLSearchParams(window.location.search).get('post')
+			if (requested) {
+				const match = posts.find(p => toSlug(p.title) === requested)
+				if (match) {
+					document.querySelector('.tab-btn[data-tabname="blog"]')?.click()
+					this.loadPost(match.file, match.title)
+				}
+			}
 		} catch (e) {
 			listEl.innerHTML = `<p style="opacity:0.5">failed to load posts</p>`
 		}
 	}
 
-	async loadPost(file) {
+	async loadPost(file, title) {
 		const listEl = this.querySelector('#blog-list')
 		const postEl = this.querySelector('#blog-post')
 		listEl.classList.add('hidden')
 		postEl.classList.remove('hidden')
 		postEl.innerHTML = `<p style="opacity:0.5">loading...</p>`
+		history.replaceState(null, "", `?post=${toSlug(title ?? file)}#blog`)
+		const goBack = () => {
+			postEl.classList.add('hidden')
+			listEl.classList.remove('hidden')
+			history.replaceState(null, "", '#blog')
+		}
 		try {
 			const res = await fetch(`${BASE}/${file}`)
 			let md = await res.text()
@@ -62,19 +78,13 @@ class BlogTab extends HTMLElement {
 				<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem;margin-bottom:1rem" id="blog-back">&#8592; back</button>
 				<div class="blog-content">${marked.parse(md)}</div>
 			`
-			postEl.querySelector('#blog-back').addEventListener('click', () => {
-				postEl.classList.add('hidden')
-				listEl.classList.remove('hidden')
-			})
+			postEl.querySelector('#blog-back').addEventListener('click', goBack)
 		} catch (e) {
 			postEl.innerHTML = `
 				<button class="border border-white hover:bg-white hover:text-black" style="padding:0.25rem 0.5rem;margin-bottom:1rem" id="blog-back">&#8592; back</button>
 				<p style="opacity:0.5">failed to load post</p>
 			`
-			postEl.querySelector('#blog-back').addEventListener('click', () => {
-				postEl.classList.add('hidden')
-				listEl.classList.remove('hidden')
-			})
+			postEl.querySelector('#blog-back').addEventListener('click', goBack)
 		}
 	}
 }
